@@ -1,15 +1,15 @@
 .breadcrumb {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.5rem;
     width: 100%;
-    padding: 0.75rem 1.25rem;
-    margin: 1rem 0 2rem;
+    padding: 0.75rem var(--page-pad);
+    margin: 0;
     background-color: var(--blanc);
-    border-top: 1px solid var(--noir);
-    border-bottom: 1px solid var(--noir);
-    font-family: "Space Mono", monospace;
-    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    font-family: var(--font-title);
+    font-size: 0.85rem;
 }
 
 .breadcrumb__link::before {
@@ -26,11 +26,23 @@
     font-weight: 700;
 }
 
+.breadcrumb__link:hover {
+    text-decoration: underline;
+}
+
 .breadcrumb__separator {
     color: var(--noir);
 }
 
 .breadcrumb__current {
     color: var(--noir);
-    font-weight: 100%;
+    font-weight: 400;
+}
+
+@media (min-width: 768px) {
+    .breadcrumb {
+        font-size: 0.9rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
 }

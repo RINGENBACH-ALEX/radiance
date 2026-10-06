@@ -1,3 +1,14 @@
+.timeline {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline__title {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    margin: 0 0 2.5rem;
+}
+
 .timeline__container {
     position: relative;
     padding-left: 1rem;
@@ -9,26 +20,103 @@
     margin-bottom: 2rem;
 }
 
-.timeline__content {
-    background-color: #2f2f2f;
-    border-radius: 16px;
-    padding: 1.6rem 1.8rem;
+.timeline__marker {
+    position: absolute;
+    top: 1.6rem;
+    /* centré sur la ligne de gauche */
+    left: calc(-1rem - 9.5px);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--jaune);
+    border: 3px solid var(--blanc-casse);
+    box-shadow: 0 0 0 2px var(--jaune);
+}
 
-    margin-left: 1.5rem;
-    width: calc(100% - 1.5rem);
+.timeline__content {
+    background-color: var(--gris);
+    border-radius: var(--radius-lg);
+    padding: 1.4rem 1.5rem;
+
+    margin-left: 0.75rem;
+    width: calc(100% - 0.75rem);
 
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
 }
 
 .timeline__year {
-    font-family: "Space Mono", monospace;
+    font-family: var(--font-title);
     font-size: 1.05rem;
-    margin-bottom: 0.7rem;
+    line-height: 1.35;
+    margin: 0 0 0.7rem;
     color: var(--jaune);
 }
 
 .timeline__text {
-    font-size: 1rem;
-    line-height: 1.75;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
     color: var(--blanc-casse);
+}
+
+/* Desktop : ligne centrale, cartes en alternance */
+@media (min-width: 900px) {
+    .timeline__title {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+
+    .timeline__container {
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .timeline__container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 3px;
+        transform: translateX(-50%);
+        background-color: var(--jaune);
+    }
+
+    .timeline__item {
+        width: 50%;
+        padding-right: 2.5rem;
+        margin-bottom: 0;
+    }
+
+    .timeline__item:nth-child(even) {
+        margin-left: 50%;
+        padding-right: 0;
+        padding-left: 2.5rem;
+    }
+
+    /* les cartes se chevauchent verticalement pour une frise plus compacte */
+    .timeline__item + .timeline__item {
+        margin-top: -2rem;
+    }
+
+    .timeline__marker {
+        left: auto;
+        right: -8px;
+    }
+
+    .timeline__item:nth-child(even) .timeline__marker {
+        left: -8px;
+        right: auto;
+    }
+
+    .timeline__content {
+        margin-left: 0;
+        width: 100%;
+        transition: transform var(--transition);
+    }
+
+    .timeline__content:hover {
+        transform: translateY(-3px);
+    }
 }

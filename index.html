@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiance</title>
+    <meta http-equiv="refresh" content="0; url=/fr/index.html">
+    <script>
+        // redirige vers la version anglaise si le navigateur n'est pas en français
+        var lang = (navigator.language || "fr").toLowerCase();
+        window.location.replace(lang.indexOf("fr") === 0 ? "/fr/index.html" : "/en/index.html");
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+</head>
+
+<body>
+    <p><a href="/fr/index.html">Radiance (FR)</a> · <a href="/en/index.html">Radiance (EN)</a></p>
+</body>
+
+</html>

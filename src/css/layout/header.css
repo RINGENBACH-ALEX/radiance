@@ -7,17 +7,25 @@
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
+.header--scrolled {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+}
+
 .header__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 0.75rem var(--page-pad);
 }
 
 .header__brand {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
+}
+
+.header__brand a {
+    display: flex;
 }
 
 .header__logo {
@@ -26,8 +34,10 @@
 }
 
 .header__title {
-    font-size: 1rem;
-    font-weight: bold;
+    font-family: var(--font-title);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
     color: var(--noir);
 }
 
@@ -37,31 +47,56 @@
     gap: 0.75rem;
 }
 
+/* Sélecteur de langue FR / EN */
 .header__lang {
+    display: flex;
+    gap: 2px;
+    padding: 3px;
     background-color: var(--blanc);
-    color: var(--noir);
+    border-radius: 999px;
+}
 
-    border: none;
-    border-radius: 20px;
-
-    padding: 0.3rem 0.8rem;
+.header__lang a {
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    font-family: var(--font-title);
     font-size: 0.75rem;
     font-weight: 700;
+    color: var(--noir);
+    text-decoration: none;
+    transition: background-color var(--transition), color var(--transition);
+}
 
-    cursor: pointer;
+.header__lang a:hover {
+    background-color: var(--blanc-ivoire);
+}
+
+.header__lang a.is-active {
+    background-color: var(--noir);
+    color: var(--jaune);
 }
 
 .header__menu-btn {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-md);
     background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: background-color var(--transition);
+}
+
+.header__menu-btn:hover {
+    background-color: rgba(0, 0, 0, 0.08);
 }
 
 .header__menu-icon {
-    width: 18px;
+    width: 20px;
     height: 2px;
     background-color: var(--noir);
     position: relative;
@@ -71,7 +106,7 @@
 .header__menu-icon::after {
     content: "";
     position: absolute;
-    width: 18px;
+    width: 20px;
     height: 2px;
     background-color: var(--noir);
     left: 0;
@@ -83,4 +118,174 @@
 
 .header__menu-icon::after {
     top: 6px;
+}
+
+@media (min-width: 768px) {
+    .header__container {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .header__logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .header__title {
+        font-size: 1.3rem;
+    }
+
+    .header__actions {
+        gap: 1.25rem;
+    }
+
+    .header__lang a {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
+    }
+}
+
+/* ---------- Navigation desktop ---------- */
+.header__nav {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .header__nav {
+        display: block;
+        margin-left: auto;
+        margin-right: 1.5rem;
+    }
+
+    .header__nav-list {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header__nav-item {
+        position: relative;
+    }
+
+    .header__nav-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.5rem 0.8rem;
+        border: 0;
+        border-radius: 999px;
+        background-color: transparent;
+        font-family: var(--font-text);
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--noir);
+        text-decoration: none;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: background-color var(--transition), color var(--transition);
+    }
+
+    .header__nav-link:hover,
+    .header__nav-item--dropdown:hover .header__nav-toggle,
+    .header__nav-item--dropdown:focus-within .header__nav-toggle {
+        background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    .header__nav-list .header__nav-link.is-active {
+        background-color: var(--noir);
+        color: var(--jaune);
+    }
+
+    /* flèche du sous-menu */
+    .header__nav-toggle::after {
+        content: "";
+        width: 0.4rem;
+        height: 0.4rem;
+        margin-top: -0.2rem;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: rotate(45deg);
+        transition: transform var(--transition), margin var(--transition);
+    }
+
+    .header__nav-item--dropdown:hover .header__nav-toggle::after,
+    .header__nav-item--dropdown.is-open .header__nav-toggle::after {
+        transform: rotate(-135deg);
+        margin-top: 0.2rem;
+    }
+
+    /* sous-menu Articles */
+    .header__dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 280px;
+        margin: 0;
+        padding: 0.5rem;
+        list-style: none;
+        background-color: var(--blanc);
+        border-radius: 12px;
+        box-shadow: var(--shadow-md);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(6px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+    }
+
+    /* zone tampon pour ne pas perdre le survol entre le bouton et le sous-menu */
+    .header__dropdown::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -0.75rem;
+        height: 0.75rem;
+    }
+
+    .header__nav-item--dropdown:hover .header__dropdown,
+    .header__nav-item--dropdown.is-open .header__dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0.5rem);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
+    }
+
+    .header__dropdown-link {
+        display: block;
+        padding: 0.65rem 0.9rem;
+        border-radius: var(--radius-md);
+        font-size: 0.95rem;
+        color: var(--noir);
+        text-decoration: none;
+        transition: background-color var(--transition), color var(--transition);
+    }
+
+    .header__dropdown-link:hover {
+        background-color: var(--blanc-ivoire);
+        color: var(--violet);
+    }
+
+    .header__dropdown-link.is-active {
+        font-weight: 700;
+        color: var(--violet);
+    }
+
+    /* le burger et le menu mobile ne servent plus sur desktop */
+    .header__menu-btn,
+    .menu {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .header__nav-list {
+        gap: 0.5rem;
+    }
+
+    .header__nav-link {
+        padding: 0.5rem 1rem;
+    }
 }

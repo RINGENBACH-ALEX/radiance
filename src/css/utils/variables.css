@@ -29,10 +29,33 @@
     /* Bordures */
     --radius-sm: 4px;
     --radius-md: 8px;
+    --radius-lg: 16px;
+
+    /* Ombres */
+    --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.16);
 
     /* Transitions */
     --transition: 0.3s ease;
 
-    /* Layout mobile */
+    /* Layout */
     --mobile-width: 430px;
+    --container: 1200px;
+    --gutter: 1.25rem;
+    /* marge latérale qui centre le contenu dans --container */
+    --page-pad: max(var(--gutter), calc((100% - var(--container)) / 2));
+}
+
+/* Tablette */
+@media (min-width: 768px) {
+    :root {
+        --gutter: 2rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    :root {
+        --gutter: 2.5rem;
+    }
 }

@@ -5,7 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timeline - Radiance</title>
-    <link rel="stylesheet" href="../src/css/style.css">
+    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="icon" type="image/png" href="/assets/favicons/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
     <link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
@@ -23,11 +28,30 @@
                 <span class="header__title">Radiance</span>
             </div>
 
+            <nav class="header__nav" aria-label="Main navigation">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item header__nav-item--dropdown">
+                        <button class="header__nav-link header__nav-toggle" aria-expanded="false">Articles</button>
+                        <ul class="header__dropdown">
+                            <li><a class="header__dropdown-link" href="/en/article-en1.html">Who is Lise Meitner?</a></li>
+                            <li><a class="header__dropdown-link" href="/en/article-en2.html">Les Ambitieuses</a></li>
+                            <li><a class="header__dropdown-link" href="/en/article-en3.html">Popularizing her theory</a></li>
+                            <li><a class="header__dropdown-link" href="/en/article-en4.html">The Race for the Bomb</a></li>
+                            <li><a class="header__dropdown-link" href="/en/article-en5.html">Women in Literature</a></li>
+                        </ul>
+                    </li>
+                    <li class="header__nav-item"><a class="header__nav-link" href="/en/timeline.html">Timeline</a></li>
+                    <li class="header__nav-item"><a class="header__nav-link" href="/en/glossary.html">Glossary</a></li>
+                    <li class="header__nav-item"><a class="header__nav-link" href="/en/about.html">About</a></li>
+                    <li class="header__nav-item"><a class="header__nav-link" href="/en/other-project.html">Other projects</a></li>
+                    <li class="header__nav-item"><a class="header__nav-link" href="/en/contact-en.html">Contact</a></li>
+                </ul>
+            </nav>
             <div class="header__actions">
-                <select class="header__lang" aria-label="Change language">
-                    <a href="/en/timeline.html">EN</option>
-                        <a href="/fr/frise.html">FR</option>
-                </select>
+                <section class="header__lang" aria-label="Change language">
+                    <a href="/fr/frise.html">FR</a>
+                    <a href="/en/timeline.html">EN</a>
+                </section>
 
                 <button class="header__menu-btn" aria-label="Open menu">
                     <span class="header__menu-icon"></span>
@@ -50,9 +74,10 @@
             <li class="menu__item"><a class="menu__link" href="/en/article-en4.html">The Race for the Bomb</a></li>
             <li class="menu__item"><a class="menu__link" href="/en/article-en5.html">Women in Literature</a></li>
             <li class="menu__item"><a class="menu__link" href="/en/timeline.html">Timeline</a></li>
-            <li class="menu__item"><a class="menu__link" href="/en/contact.html">Contact</a></li>
+            <li class="menu__item"><a class="menu__link" href="/en/contact-en.html">Contact</a></li>
             <li class="menu__item"><a class="menu__link" href="/en/about.html">About</a></li>
-            <li class="menu__item"><a class="menu__link" href="/en/other-projects.html">Other Projects</a></li>
+            <li class="menu__item"><a class="menu__link" href="/en/other-project.html">Other Projects</a></li>
+            <li class="menu__item"><a class="menu__link" href="/en/glossary.html">Glossary</a></li>
         </ul>
     </nav>
 
@@ -200,7 +225,7 @@
             <a href="/en/index.html" class="footer__link">Articles</a>
             <a href="/en/contact-en.html" class="footer__link">Contact</a>
             <a href="/en/about.html" class="footer__link">About</a>
-            <a href="/en/other-projects.html" class="footer__link">Other Projects</a>
+            <a href="/en/other-project.html" class="footer__link">Other Projects</a>
         </div>
 
         <div class="footer__section">

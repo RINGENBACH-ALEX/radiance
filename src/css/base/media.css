@@ -6,6 +6,14 @@
 
 .video__player {
     width: 100%;
-    max-width: 680px;
+    max-width: 900px;
     display: block;
+    border-radius: var(--radius-md);
+    background-color: var(--noir);
+}
+
+@media (min-width: 768px) {
+    .video__player {
+        border-radius: var(--radius-lg);
+    }
 }

@@ -1,11 +1,14 @@
 .other-projects {
-    padding: 2rem 1.5rem 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0.5rem 0 1rem;
 }
 
 .other-projects__title {
-    font-size: 1.4rem;
+    font-family: var(--font-title);
+    font-size: 1.6rem;
     font-weight: 700;
-    margin-bottom: 2.5rem;
+    margin: 0 0 2.5rem;
     text-align: center;
 }
 
@@ -49,9 +52,10 @@
 }
 
 .project-card__content {
+    position: relative;
     background-color: var(--blanc-ivoire);
     border: 1px solid var(--jaune);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
 
     width: 90%;
     max-width: 320px;
@@ -62,18 +66,75 @@
     align-items: center;
     gap: 0.9rem;
 
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.project-card__content:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--violet);
 }
 
 .project-card__logo {
     width: 34px;
     height: 34px;
+    flex-shrink: 0;
     object-fit: contain;
     border-radius: 50%;
 }
 
 .project-card__link {
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--noir);
     text-decoration: underline;
+}
+
+/* toute la carte est cliquable */
+.project-card__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+@media (min-width: 768px) {
+    .other-projects__title {
+        font-size: 2rem;
+    }
+
+    .other-projects__timeline {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+        padding-top: 0;
+    }
+
+    .other-projects__timeline::before,
+    .other-projects__timeline::after {
+        display: none;
+    }
+
+    .project-card__content {
+        width: 100%;
+        max-width: none;
+        padding: 1.25rem 1.5rem;
+        gap: 1.1rem;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .project-card__logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .project-card__link {
+        font-size: 1.05rem;
+        text-decoration: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .other-projects__timeline {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

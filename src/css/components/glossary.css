@@ -1,13 +1,12 @@
 .glossary {
-    max-width: 720px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 2rem 1.25rem 3rem;
 }
 
 .glossary__title {
-    font-family: "Space Mono", monospace;
+    font-family: var(--font-title);
     font-size: 1.6rem;
-    margin-bottom: 2.5rem;
+    margin: 0 0 2.5rem;
     color: var(--noir);
 }
 
@@ -16,25 +15,35 @@
 }
 
 .glossary__letter {
-    font-family: "Space Mono", monospace;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background-color: var(--jaune);
+    font-family: var(--font-title);
     font-size: 1.4rem;
-    margin-bottom: 1.25rem;
+    margin: 0 0 1.25rem;
     color: var(--noir);
 }
 
 .glossary__term {
+    display: flex;
+    flex-direction: column;
     background-color: var(--gris);
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem 1.25rem;
     margin-bottom: 1.25rem;
 
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    scroll-margin-top: 6rem;
 }
 
 .glossary__word {
-    font-family: "Space Mono", monospace;
+    font-family: var(--font-title);
     font-size: 0.95rem;
-    margin-bottom: 0.6rem;
+    margin: 0 0 0.6rem;
     color: var(--jaune);
     text-transform: uppercase;
 }
@@ -42,5 +51,47 @@
 .glossary__definition {
     font-size: 0.9rem;
     line-height: 1.6;
+    margin: 0 0 1rem;
     color: var(--blanc-casse);
+}
+
+.glossary__link {
+    margin-top: auto;
+    align-self: flex-start;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--jaune);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+}
+
+.glossary__link::after {
+    content: " ↗";
+}
+
+.glossary__link:hover {
+    color: var(--blanc);
+}
+
+@media (min-width: 768px) {
+    .glossary__title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .glossary__section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+
+    .glossary__letter {
+        grid-column: 1 / -1;
+        margin-bottom: 0;
+    }
+
+    .glossary__term {
+        margin-bottom: 0;
+        padding: 1.75rem;
+    }
 }

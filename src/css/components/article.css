@@ -1,13 +1,13 @@
 .article__glossary-link {
     text-decoration: none;
     color: inherit;
-    border-bottom: 2px solid currentColor;
+    border-bottom: 2px solid var(--jaune);
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .article__glossary-link:hover {
-    opacity: 0.7;
+    background-color: var(--blanc-ivoire);
 }
 
 .article__glossary-link:active {

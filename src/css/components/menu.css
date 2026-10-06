@@ -1,15 +1,39 @@
 .menu {
     position: fixed;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    overflow-y: auto;
     background-color: var(--jaune);
     padding: 1.5rem;
     transform: translateX(100%);
-    transition: transform 0.3s ease;
-    z-index: 1000;
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0s linear 0.3s;
+    z-index: 1001;
 }
 
 .menu--open {
     transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.3s ease, visibility 0s;
+}
+
+/* Fond assombri derrière le menu (tablette / desktop) */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+body.is-menu-open::after {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .menu__header {
@@ -20,16 +44,26 @@
 }
 
 .menu__title {
-    font-size: 1rem;
-    font-weight: bold;
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    font-weight: 700;
     color: var(--noir);
 }
 
 .menu__close {
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: var(--radius-md);
     background-color: transparent;
     color: var(--noir);
-    font-size: 1rem;
-    padding: 0.25rem 0.5rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background-color var(--transition);
+}
+
+.menu__close:hover {
+    background-color: rgba(0, 0, 0, 0.08);
 }
 
 .menu__list {
@@ -38,10 +72,37 @@
     margin: 0;
 }
 
+.menu__item + .menu__item {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
 .menu__link {
     display: block;
-    padding: 1rem 0;
+    padding: 0.9rem 0;
     font-size: 1rem;
     text-decoration: none;
     color: var(--noir);
+    transition: color var(--transition), padding-left var(--transition);
+}
+
+.menu__link:hover,
+.menu__link--active {
+    color: var(--violet);
+    padding-left: 0.5rem;
+}
+
+.menu__link--active {
+    font-weight: 700;
+}
+
+@media (min-width: 768px) {
+    .menu {
+        width: 420px;
+        padding: 2rem 2.5rem;
+        box-shadow: -12px 0 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu__link {
+        font-size: 1.05rem;
+    }
 }
